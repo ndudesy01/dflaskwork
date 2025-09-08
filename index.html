@@ -2,44 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desmond's Classwork</title>
   <style>
     /* General Reset */
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #e1f5fe;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e1f5fe 0%, #bbdefb 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
+      color: #333;
+      line-height: 1.6;
     }
 
     /* Header Styling */
     header {
       background: linear-gradient(to right, #6a11cb, #2575fc);
       color: white;
-      font-size: 32px;
+      font-size: 1.8rem;
       font-weight: bold;
       text-align: center;
-      padding: 20px 0;
+      padding: 25px 0;
       width: 100%;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      border-bottom: 4px solid #2575fc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-bottom: 4px solid #1a5edc;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     /* Intro Section */
     .intro {
       text-align: center;
-      margin: 30px 0;
+      margin: 20px 0 40px;
+      padding: 0 20px;
+    }
+
+    .intro h2 {
+      font-size: 2rem;
+      color: #1565c0;
+      margin-bottom: 15px;
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+      color: #455a64;
+      max-width: 600px;
     }
 
     /* Button Group */
     .button-group {
       display: flex;
-      gap: 15px;
+      gap: 25px;
       justify-content: center;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
     }
 
     .button-group a {
@@ -47,62 +85,203 @@
     }
 
     .button-group button {
-      background-color: #2575fc;
+      background: linear-gradient(to bottom, #2575fc, #1a5edc);
       color: white;
       border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 5px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      min-width: 150px;
     }
 
     .button-group button:hover {
-      background-color: #1a5edc;
+      background: linear-gradient(to bottom, #1a5edc, #1552b3);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .button-group button:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 40px 0;
+      width: 100%;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature i {
+      font-size: 2.5rem;
+      color: #2575fc;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      color: #1565c0;
+      margin-bottom: 10px;
     }
 
     /* Links & Messages */
     a {
       text-decoration: none;
       color: #0288d1;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #01579b;
+      text-decoration: underline;
     }
 
     .error {
-      color: red;
+      color: #d32f2f;
+      background-color: #ffebee;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin: 15px 0;
+      border-left: 4px solid #d32f2f;
     }
+    
     .success {
-      color: green;
+      color: #388e3c;
+      background-color: #e8f5e9;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin: 15px 0;
+      border-left: 4px solid #388e3c;
     }
 
     /* Footer */
     footer {
       margin-top: auto;
-      padding: 15px;
+      padding: 20px;
       background: #f5f5f5;
       width: 100%;
       text-align: center;
-      font-size: 14px;
-      border-top: 1px solid #ccc;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+      color: #555;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        font-size: 1.5rem;
+        padding: 20px 0;
+      }
+      
+      .intro h2 {
+        font-size: 1.7rem;
+      }
+      
+      .button-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .button-group button {
+        width: 250px;
+      }
+      
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .feature {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.3rem;
+      }
+      
+      .intro h2 {
+        font-size: 1.5rem;
+      }
+      
+      .intro p {
+        font-size: 1rem;
+      }
+      
+      .button-group button {
+        width: 100%;
+        max-width: 250px;
+      }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
     <h1>Welcome to Desmond's Classwork</h1>
   </header>
 
-  <div class="intro">
-    <h2>Login or Register</h2>
-    <p>Please choose an action:</p>
-  </div>
+  <main>
+    <div class="intro">
+      <h2>Login or Register</h2>
+      <p>Access your classwork or create a new account to get started</p>
+    </div>
 
-  <div class="button-group">
-    <a href="login.html"><button>Login</button></a>
-    <a href="register.html"><button>Register</button></a>
-  </div>
+    <div class="button-group">
+      <a href="login.html">
+        <button>
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+      </a>
+      <a href="register.html">
+        <button>
+          <i class="fas fa-user-plus"></i> Register
+        </button>
+      </a>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-book"></i>
+        <h3>Course Materials</h3>
+        <p>Access all your class materials in one place</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-tasks"></i>
+        <h3>Assignments</h3>
+        <p>Submit and track your assignments</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-chart-line"></i>
+        <h3>Progress Tracking</h3>
+        <p>Monitor your academic progress</p>
+      </div>
+    </div>
+  </main>
 
   <footer>
-    &copy; 2025 Desmond's Classwork. All rights reserved.
+    <p>&copy; 2025 Desmond's Classwork. All rights reserved.</p>
   </footer>
 </body>
 </html>
